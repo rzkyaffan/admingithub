@@ -23,7 +23,7 @@ $students = query("SELECT * FROM murid")
 
         td,
         th {
-            padding: 1rem;
+            padding: .5rem;
         }
 
         .container {
@@ -98,6 +98,10 @@ $students = query("SELECT * FROM murid")
         }
 
         .menu:hover {
+            background-color: #8279f6;
+            color: #f4f4fd;
+        }
+        .active{
             background-color: #8279f6;
             color: #f4f4fd;
         }
@@ -223,7 +227,7 @@ $students = query("SELECT * FROM murid")
                         <td><?= $student["kelas"]; ?></td>
                         <td><?= $student["jurusan"]; ?></td>
                         <td>
-                            <button type="submit" class="btn">Edit</button>
+                            <button type="submit"><a href="edit.php?id=<?= $student["id"];?>" class="btn">Edit</a></button>
                             <button type="submit" class="btn danger">Delete</button>
                         </td>
                 </tr>
@@ -237,26 +241,36 @@ $students = query("SELECT * FROM murid")
 </body>
 <script>
     function updateClock() {
-        var now = new Date();
-        var day = now.toLocaleString('en-US', {
+        let now = new Date();
+        let day = now.toLocaleString('en-US', {
             weekday: 'long'
         });
-        var date = now.getDate();
-        var month = now.toLocaleString('en-US', {
+        let date = now.getDate();
+        let month = now.toLocaleString('en-US', {
             month: 'long'
         });
-        var year = now.getFullYear();
-        var hours = now.getHours();
-        var minutes = now.getMinutes();
-        var seconds = now.getSeconds();
+        let year = now.getFullYear();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
 
-        var timeString = day + ', ' + date + ' ' + month + ' ' + year + ' - ' +
+        let timeString = day + ', ' + date + ' ' + month + ' ' + year + ' - ' +
             hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
 
         document.getElementById('date').textContent = timeString;
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    let menu = document.querySelector('.menu');
+    menu.addEventListener('click', function () {
+       menu.classList.toggle('active');
+    });
+
+    console.log(menu)
+
+
+
 </script>
 
 </html>

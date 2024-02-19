@@ -1,33 +1,35 @@
-<?php
-require 'functions.php';
+<?php 
 
-if (isset($_POST["submit"])) {
-    if (tambah($_POST) > 0) {
-        echo
-        "
-    <script>
-    alert('input successful');
-    document.location.href = 'index.php'
-    </script>
+require 'functions.php';
+$id = $_GET["id"];
+
+$students = query("SELECT * FROM murid WHERE id = $id")[0];
+
+if(isset ($_POST["submit"])){
+  
+    if(edit($_POST) > 0){
+        echo "
+        <script>
+        alert('data berhasil diubah 🙂')
+        document.location.href = 'index.php'
+        </script>
         ";
     } else {
-        echo
-        "
-    <script>
-    alert('input failed, try again in a few moments');
-    </>
+        echo "<script>
+        alert(`tidak terdeteksi data diubah \n coba periksa apakah ada kesalahan`)
+        document.location.href = 'index.php'
+        </script>
         ";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Siswa</title>
+    <title>Edit Data</title>
     <style>
         * {
             margin: 0;
@@ -195,20 +197,20 @@ if (isset($_POST["submit"])) {
         <main>
            
             <form action="" method="POST">
-            <input type="hidden" name="id">
+            <input type="hidden" name="id" value="<?=$students["id"]?>">
                 <li>
-                    <label for="nama">Siswa Baru :</label>
-                    <input type="text" name="nama" id="nama" required>
+                    <label for="nama">Nama Siswa:</label>
+                    <input type="text" name="nama" id="nama" required value="<?=$students["nama_siswa"]?>">
                 </li>
 
                 <li>
                     <label for="kelas">Kelas:</label>
-                    <input type="text" name="kelas" id="kelas" required>
+                    <input type="text" name="kelas" id="kelas" required value="<?=$students["kelas"]?>">
                 </li>
 
                 <li>
                     <label for="jurusan">Jurusan:</label>
-                    <input type="text" name="jurusan" id="jurusan" required>
+                    <input type="text" name="jurusan" id="jurusan" required value="<?=$students["jurusan"]?>">
                 </li>
                 <button type="submit" name="submit">Create</button>
             </form>
