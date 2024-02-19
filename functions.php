@@ -48,7 +48,17 @@
     return mysqli_affected_rows($db);
 
 }
+
+// delete functions
+
+function delete(){
+  global $db;
+  global $id;
+  mysqli_query($db,"DELETE FROM murid WHERE id = $id");
+  return mysqli_affected_rows($db);
+}
 ?>
+
 
 
 

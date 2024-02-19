@@ -16,7 +16,7 @@ if(isset ($_POST["submit"])){
         ";
     } else {
         echo "<script>
-        alert(`tidak terdeteksi data diubah \n coba periksa apakah ada kesalahan`)
+        alert(`tidak terdeteksi data diubah \ncoba periksa apakah ada kesalahan`)
         document.location.href = 'index.php'
         </script>
         ";

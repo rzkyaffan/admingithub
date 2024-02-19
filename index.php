@@ -143,6 +143,7 @@ $students = query("SELECT * FROM murid")
 
         .danger {
             background: #c9190b;
+            color: #e6f0fd;
         }
 
         .box{
@@ -228,7 +229,7 @@ $students = query("SELECT * FROM murid")
                         <td><?= $student["jurusan"]; ?></td>
                         <td>
                             <button type="submit"><a href="edit.php?id=<?= $student["id"];?>" class="btn">Edit</a></button>
-                            <button type="submit" class="btn danger">Delete</button>
+                            <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?=$student["id"] ?>"class="danger" >Delete</a></button>
                         </td>
                 </tr>
                 <?php $i++; ?>
