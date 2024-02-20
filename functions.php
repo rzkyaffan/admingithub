@@ -18,9 +18,9 @@
     global $db;
     $nama = htmlspecialchars($data["nama"]);
     $kelas = htmlspecialchars($data["kelas"]);
-    $jurusan = htmlspecialchars($data["jurusan"]);
+    $NIS = htmlspecialchars($data["NIS"]);
 
-    $query = "INSERT INTO murid VALUES('', '$nama', '$kelas', '$jurusan')";
+    $query = "INSERT INTO murid VALUES('', '$nama', '$kelas', '$NIS')";
 
     mysqli_query($db , $query);
 
@@ -35,12 +35,12 @@
     $id = $data["id"];
     $nama = htmlspecialchars($data["nama"]);
     $kelas = htmlspecialchars($data["kelas"]);
-    $jurusan = htmlspecialchars($data["jurusan"]);
+    $NIS = htmlspecialchars($data["NIS"]);
 
     $query = "UPDATE murid SET
     nama_siswa = '$nama',
     kelas = '$kelas',
-    jurusan = '$jurusan'
+    NIS = '$NIS'
 
     WHERE id = $id";
     
@@ -57,7 +57,18 @@ function delete(){
   mysqli_query($db,"DELETE FROM murid WHERE id = $id");
   return mysqli_affected_rows($db);
 }
+
+// search function
+function search($keyword){
+  $query = "SELECT * FROM murid WHERE 
+  nama_siswa LIKE '%$keyword%' OR 
+  kelas LIKE '%$keyword%' OR 
+  NIS LIKE '%$keyword%'";
+  return query($query);
+}
 ?>
+
+
 
 
 

@@ -207,8 +207,8 @@ if (isset($_POST["submit"])) {
                 </li>
 
                 <li>
-                    <label for="jurusan">Jurusan:</label>
-                    <input type="text" name="jurusan" id="jurusan" required>
+                    <label for="NIS">NIS:</label>
+                    <input type="text" name="NIS" id="NIS" required>
                 </li>
                 <button type="submit" name="submit">Create</button>
             </form>

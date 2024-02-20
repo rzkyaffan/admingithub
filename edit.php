@@ -209,10 +209,10 @@ if(isset ($_POST["submit"])){
                 </li>
 
                 <li>
-                    <label for="jurusan">Jurusan:</label>
-                    <input type="text" name="jurusan" id="jurusan" required value="<?=$students["jurusan"]?>">
+                    <label for="NIS">NIS:</label>
+                    <input type="text" name="NIS" id="NIS" required value="<?=$students["NIS"]?>">
                 </li>
-                <button type="submit" name="submit">Create</button>
+                <button type="submit" name="submit">Confirm</button>
             </form>
         </main>
     </section>

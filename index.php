@@ -1,6 +1,10 @@
 <?php
 require 'functions.php';
-$students = query("SELECT * FROM murid")
+$students = query("SELECT * FROM murid ORDER BY id DESC");
+
+if(isset($_POST["btnsearch"])){
+    $students = search($_POST["keywords"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -130,8 +134,9 @@ $students = query("SELECT * FROM murid")
         }
 
         .search input {
-            padding: .7rem;
+            padding: .56rem;
             border-radius: .4rem;
+            margin-right: .5rem;
         }
 
         .btn {
@@ -204,8 +209,9 @@ $students = query("SELECT * FROM murid")
                 </div>
             </header>
             <div class="search">
-                <form action="">
-                    <input type="text" size="35" placeholder="Search">
+                <form action="" method="post">
+                    <input type="text" size="35" placeholder="Masukkan Keyword" name="keywords" autocomplete="off">
+                    <button type="submit" name="btnsearch"><a href="search.php" class="btn">Search</a></button>
                 </form>
                 <div id="date"></div>
             </div>
@@ -217,7 +223,7 @@ $students = query("SELECT * FROM murid")
                     <th>ID</th>
                     <th>Nama Siswa</th>
                     <th>Kelas</th>
-                    <th>Jurusan</th>
+                    <th>NIS</th>
                     <th>Menu</th>
                 </tr>
                 <tr>
@@ -226,7 +232,7 @@ $students = query("SELECT * FROM murid")
                         <td><?= $i ?></td>
                         <td><?= $student["nama_siswa"]; ?></td>
                         <td><?= $student["kelas"]; ?></td>
-                        <td><?= $student["jurusan"]; ?></td>
+                        <td><?= $student["NIS"]; ?></td>
                         <td>
                             <button type="submit"><a href="edit.php?id=<?= $student["id"];?>" class="btn">Edit</a></button>
                             <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?=$student["id"] ?>"class="danger" >Delete</a></button>
